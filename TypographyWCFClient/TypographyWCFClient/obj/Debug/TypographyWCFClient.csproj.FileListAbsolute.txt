@@ -13,3 +13,10 @@ C:\Users\user\Desktop\WCFTypography\TypographyWCFClient\TypographyWCFClient\obj\
 C:\Users\user\Desktop\WCFTypography\TypographyWCFClient\TypographyWCFClient\obj\Debug\TypographyWCFClient.csproj.CoreCompileInputs.cache
 C:\Users\user\Desktop\WCFTypography\TypographyWCFClient\TypographyWCFClient\obj\Debug\TypographyWCFClient.exe
 C:\Users\user\Desktop\WCFTypography\TypographyWCFClient\TypographyWCFClient\obj\Debug\TypographyWCFClient.pdb
+C:\Users\user\Desktop\STUDY\WCFTypography\TypographyWCFClient\TypographyWCFClient\bin\Debug\TypographyWCFClient.exe.config
+C:\Users\user\Desktop\STUDY\WCFTypography\TypographyWCFClient\TypographyWCFClient\bin\Debug\TypographyWCFClient.exe
+C:\Users\user\Desktop\STUDY\WCFTypography\TypographyWCFClient\TypographyWCFClient\bin\Debug\TypographyWCFClient.pdb
+C:\Users\user\Desktop\STUDY\WCFTypography\TypographyWCFClient\TypographyWCFClient\obj\Debug\TypographyWCFClient.csprojAssemblyReference.cache
+C:\Users\user\Desktop\STUDY\WCFTypography\TypographyWCFClient\TypographyWCFClient\obj\Debug\TypographyWCFClient.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\STUDY\WCFTypography\TypographyWCFClient\TypographyWCFClient\obj\Debug\TypographyWCFClient.exe
+C:\Users\user\Desktop\STUDY\WCFTypography\TypographyWCFClient\TypographyWCFClient\obj\Debug\TypographyWCFClient.pdb

@@ -10,6 +10,9 @@ namespace Typography_WCF
     public interface IClasses
     {
         [OperationContract]
+        bool checkToken(Person user);
+
+        [OperationContract]
         void changePwd(int personID, string password);
 
         [OperationContract]

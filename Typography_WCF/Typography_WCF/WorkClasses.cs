@@ -191,6 +191,18 @@ namespace Typography_WCF
             return isLoggedOut;
         }
 
+        public bool checkToken(Person user)
+        {
+            if (user.token != "")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void changePwd(int personID, string password)//функция смены пароля
         {
             List<Person> allPersons = getPersons();
