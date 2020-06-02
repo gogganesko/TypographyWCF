@@ -45,19 +45,22 @@ namespace TypographyWCFClient
                 }
                 if (userChoice == 3 && isAuth == 0)
                 {
-                    Console.WriteLine("Введите логин");
-                    string login = Convert.ToString(Console.ReadLine());
-                    Console.WriteLine("Введите пароль");
-                    string password = Convert.ToString(Console.ReadLine());
-                    if (classesClient.auth(login, password) == 1)
+                    if (classesClient.checkToken(currentUser) == true)
                     {
-                        isAuth = 1;
-                        currentUser = classesClient.getPersons().First(x => x.login == login && x.password == password);                      
-                        Console.WriteLine("Вы успешно авторизовались!");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Попытка авторизации провалилась!");
+                        Console.WriteLine("Введите логин");
+                        string login = Convert.ToString(Console.ReadLine());
+                        Console.WriteLine("Введите пароль");
+                        string password = Convert.ToString(Console.ReadLine());
+                        if (classesClient.auth(login, password) == 1)
+                        {
+                            isAuth = 1;
+                            currentUser = classesClient.getPersons().First(x => x.login == login && x.password == password);
+                            Console.WriteLine("Вы успешно авторизовались!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Попытка авторизации провалилась!");
+                        }
                     }
                 }
 
@@ -68,153 +71,177 @@ namespace TypographyWCFClient
 
                 if (userChoice == 5 && isAuth == 1)
                 {
-                    Order[] orders = classesClient.getOrders();
-                    List<Order> myOrders = new List<Order>();
-                    foreach (Order order in orders)
+                    if (classesClient.checkToken(currentUser) == true)
                     {
-                        if (order.client.id == currentUser.id)
+                        Order[] orders = classesClient.getOrders();
+                        List<Order> myOrders = new List<Order>();
+                        foreach (Order order in orders)
                         {
-                            myOrders.Add(order);
+                            if (order.client.id == currentUser.id)
+                            {
+                                myOrders.Add(order);
+                            }
+                        }
+                        Console.WriteLine("ID||Клиент||Услуга||Количество||Дата||Статус");
+                        foreach (Order order in myOrders)
+                        {
+                            Console.WriteLine("{0}||{1}||{2}||{3}||{4}||{5}", Convert.ToString(order.id), order.client.name, order.service.name, Convert.ToString(order.count), Convert.ToString(order.date), order.state);
                         }
                     }
-                    Console.WriteLine("ID||Клиент||Услуга||Количество||Дата||Статус");
-                    foreach (Order order in myOrders)
-                    {
-                        Console.WriteLine("{0}||{1}||{2}||{3}||{4}||{5}", Convert.ToString(order.id), order.client.name, order.service.name, Convert.ToString(order.count), Convert.ToString(order.date), order.state);
-                    }                    
                 }
                 if (userChoice == 6 && isAuth == 1)
                 {
-                    Order order = new Order();
-                    order.client = currentUser;
-                    Service[] services = classesClient.getServices();
-                    Console.WriteLine("ID||Тип печати||Цена||Название");
-                    foreach (Service service in services)
+                    if (classesClient.checkToken(currentUser) == true)
                     {
-                        Console.WriteLine("{0}||{1}||{2}||{3}", Convert.ToString(service.id), Convert.ToString(service.printType.name), Convert.ToString(service.price), Convert.ToString(service.name));
+                        Order order = new Order();
+                        order.client = currentUser;
+                        Service[] services = classesClient.getServices();
+                        Console.WriteLine("ID||Тип печати||Цена||Название");
+                        foreach (Service service in services)
+                        {
+                            Console.WriteLine("{0}||{1}||{2}||{3}", Convert.ToString(service.id), Convert.ToString(service.printType.name), Convert.ToString(service.price), Convert.ToString(service.name));
+                        }
+                        Console.WriteLine("Выберите ID услуги");
+                        int serviceID = Convert.ToInt32(Console.ReadLine());
+                        services = classesClient.getServices();
+                        order.service = services.First(x => x.id == serviceID);
+                        Console.WriteLine("Введите количество");
+                        int count = Convert.ToInt32(Console.ReadLine());
+                        order.count = count;
+                        order.date = DateTime.Now;
+                        order.state = "В обработке";
+                        classesClient.addOrder(order);
+                        Console.WriteLine("Заказ был успешно добавлен!");
                     }
-                    Console.WriteLine("Выберите ID услуги");
-                    int serviceID = Convert.ToInt32(Console.ReadLine());
-                    services = classesClient.getServices();
-                    order.service = services.First(x => x.id == serviceID);
-                    Console.WriteLine("Введите количество");
-                    int count = Convert.ToInt32(Console.ReadLine());
-                    order.count = count;
-                    order.date = DateTime.Now;
-                    order.state = "В обработке";
-                    classesClient.addOrder(order);
-                    Console.WriteLine("Заказ был успешно добавлен!");
                 }
 
                 if (userChoice == 7 && isAuth == 1)
                 {
-                    Order[] orders = classesClient.getOrders();
-                    List<Order> myOrders = new List<Order>();
-                    foreach (Order order in orders)
+                    if (classesClient.checkToken(currentUser) == true)
                     {
-                        if (order.client.id == currentUser.id)
+                        Order[] orders = classesClient.getOrders();
+                        List<Order> myOrders = new List<Order>();
+                        foreach (Order order in orders)
                         {
-                            myOrders.Add(order);
+                            if (order.client.id == currentUser.id)
+                            {
+                                myOrders.Add(order);
+                            }
                         }
+                        Console.WriteLine("ID||Клиент||Услуга||Количество||Дата||Статус");
+                        foreach (Order order in myOrders)
+                        {
+                            Console.WriteLine("{0}||{1}||{2}||{3}||{4}||{5}", Convert.ToString(order.id), order.client.name, order.service.name, Convert.ToString(order.count), Convert.ToString(order.date), order.state);
+                        }
+                        Console.WriteLine("Выберите ID заказа для показа подробной информации");
+                        int orderID = Convert.ToInt32(Console.ReadLine());
+                        Order o = myOrders.Find(x => x.id == orderID);
+                        Console.WriteLine("Подробная информация о заказе:\nID:{0}\nВладелец:{1}\nУслуга:{2}\nКоличество:{3}\nДата:{4}\nСтатус:{5}", Convert.ToString(o.id), o.client.name, o.service.name, Convert.ToString(o.count), Convert.ToString(o.date), o.state);
                     }
-                    Console.WriteLine("ID||Клиент||Услуга||Количество||Дата||Статус");
-                    foreach (Order order in myOrders)
-                    {
-                        Console.WriteLine("{0}||{1}||{2}||{3}||{4}||{5}", Convert.ToString(order.id), order.client.name, order.service.name, Convert.ToString(order.count), Convert.ToString(order.date), order.state);
-                    }
-                    Console.WriteLine("Выберите ID заказа для показа подробной информации");
-                    int orderID = Convert.ToInt32(Console.ReadLine());
-                    Order o = myOrders.Find(x => x.id == orderID);
-                    Console.WriteLine("Подробная информация о заказе:\nID:{0}\nВладелец:{1}\nУслуга:{2}\nКоличество:{3}\nДата:{4}\nСтатус:{5}", Convert.ToString(o.id), o.client.name, o.service.name, Convert.ToString(o.count), Convert.ToString(o.date), o.state);
                 }
 
                 if (userChoice == 8 && isAuth == 1)
                 {
-                    ChatMessage chatMessage = new ChatMessage();
-                    chatMessage.author = currentUser;
-                    Order[] orders = classesClient.getOrders();
-                    List<Order> myOrders = new List<Order>();
-                    foreach (Order order in orders)
+                    if (classesClient.checkToken(currentUser) == true)
                     {
-                        if (order.client.id == currentUser.id)
+                        ChatMessage chatMessage = new ChatMessage();
+                        chatMessage.author = currentUser;
+                        Order[] orders = classesClient.getOrders();
+                        List<Order> myOrders = new List<Order>();
+                        foreach (Order order in orders)
                         {
-                            myOrders.Add(order);
+                            if (order.client.id == currentUser.id)
+                            {
+                                myOrders.Add(order);
+                            }
                         }
+                        Console.WriteLine("ID||Клиент||Услуга||Количество||Дата||Статус");
+                        foreach (Order order in myOrders)
+                        {
+                            Console.WriteLine("{0}||{1}||{2}||{3}||{4}||{5}", Convert.ToString(order.id), order.client.name, order.service.name, Convert.ToString(order.count), Convert.ToString(order.date), order.state);
+                        }
+                        Console.WriteLine("Выберите заказ в который нужно отправить сообщение");
+                        int orderID = Convert.ToInt32(Console.ReadLine());
+                        chatMessage.order = myOrders.Find(x => x.id == orderID);
+                        Console.WriteLine("Введите текст сообщения");
+                        chatMessage.message = Convert.ToString(Console.ReadLine());
+                        chatMessage.date = DateTime.Now;
+                        classesClient.addChatMessage(chatMessage);
+                        Console.WriteLine("Сообщение отправлено!");
                     }
-                    Console.WriteLine("ID||Клиент||Услуга||Количество||Дата||Статус");
-                    foreach (Order order in myOrders)
-                    {
-                        Console.WriteLine("{0}||{1}||{2}||{3}||{4}||{5}", Convert.ToString(order.id), order.client.name, order.service.name, Convert.ToString(order.count), Convert.ToString(order.date), order.state);
-                    }
-                    Console.WriteLine("Выберите заказ в который нужно отправить сообщение");
-                    int orderID = Convert.ToInt32(Console.ReadLine());
-                    chatMessage.order = myOrders.Find(x => x.id == orderID);
-                    Console.WriteLine("Введите текст сообщения");
-                    chatMessage.message = Convert.ToString(Console.ReadLine());
-                    chatMessage.date = DateTime.Now;
-                    classesClient.addChatMessage(chatMessage);
-                    Console.WriteLine("Сообщение отправлено!");
                 }
 
                 if (userChoice == 9 && isAuth == 1)
                 {
-                    Order[] orders = classesClient.getOrders();
-                    List<Order> myOrders = new List<Order>();
-                    foreach (Order order in orders)
+                    if (classesClient.checkToken(currentUser) == true)
                     {
-                        if (order.client.id == currentUser.id)
+                        Order[] orders = classesClient.getOrders();
+                        List<Order> myOrders = new List<Order>();
+                        foreach (Order order in orders)
                         {
-                            myOrders.Add(order);
+                            if (order.client.id == currentUser.id)
+                            {
+                                myOrders.Add(order);
+                            }
                         }
-                    }
-                    Console.WriteLine("ID||Клиент||Услуга||Количество||Дата||Статус");
-                    foreach (Order order in myOrders)
-                    {
-                        Console.WriteLine("{0}||{1}||{2}||{3}||{4}||{5}", Convert.ToString(order.id), order.client.name, order.service.name, Convert.ToString(order.count), Convert.ToString(order.date), order.state);
-                    }
-                    Console.WriteLine("Выберите нужный заказ");
-                    int orderID = Convert.ToInt32(Console.ReadLine());
-                    ChatMessage[] chatMessages = classesClient.getChatMessages();
-                    List<ChatMessage> myChatMessages = new List<ChatMessage>();
-                    foreach (ChatMessage cm in chatMessages)
-                    {
-                        if (cm.order.id == orderID)
+                        Console.WriteLine("ID||Клиент||Услуга||Количество||Дата||Статус");
+                        foreach (Order order in myOrders)
                         {
-                            myChatMessages.Add(cm);
+                            Console.WriteLine("{0}||{1}||{2}||{3}||{4}||{5}", Convert.ToString(order.id), order.client.name, order.service.name, Convert.ToString(order.count), Convert.ToString(order.date), order.state);
                         }
-                    }
-                    Console.WriteLine("ID||Автор||ID Заказа||Текст||Дата");
-                    foreach (ChatMessage cm in myChatMessages)
-                    {
-                        Console.WriteLine("{0}||{1}||{2}||{3}||{4}", Convert.ToString(cm.id), cm.author.name, Convert.ToString(cm.order.id), cm.message, Convert.ToString(cm.date));
+                        Console.WriteLine("Выберите нужный заказ");
+                        int orderID = Convert.ToInt32(Console.ReadLine());
+                        ChatMessage[] chatMessages = classesClient.getChatMessages();
+                        List<ChatMessage> myChatMessages = new List<ChatMessage>();
+                        foreach (ChatMessage cm in chatMessages)
+                        {
+                            if (cm.order.id == orderID)
+                            {
+                                myChatMessages.Add(cm);
+                            }
+                        }
+                        Console.WriteLine("ID||Автор||ID Заказа||Текст||Дата");
+                        foreach (ChatMessage cm in myChatMessages)
+                        {
+                            Console.WriteLine("{0}||{1}||{2}||{3}||{4}", Convert.ToString(cm.id), cm.author.name, Convert.ToString(cm.order.id), cm.message, Convert.ToString(cm.date));
+                        }
                     }
                 }
 
                 if (userChoice == 10 && isAuth == 1)
                 {
-                    Console.WriteLine("Введите начальную дату в формате yyyy-MM-dd");
-                    DateTime startDate = Convert.ToDateTime(Console.ReadLine());
-                    Console.WriteLine("Введите конечную дату в формате yyyy-MM-dd");
-                    DateTime endDate = Convert.ToDateTime(Console.ReadLine());
-                    Order[] myOrders = classesClient.getOrdersByDate(currentUser.id, startDate, endDate);
-                    foreach (Order order in myOrders)
+                    if (classesClient.checkToken(currentUser) == true)
                     {
-                        Console.WriteLine("{0}||{1}||{2}||{3}||{4}||{5}", Convert.ToString(order.id), order.client.name, order.service.name, Convert.ToString(order.count), Convert.ToString(order.date), order.state);
+                        Console.WriteLine("Введите начальную дату в формате yyyy-MM-dd");
+                        DateTime startDate = Convert.ToDateTime(Console.ReadLine());
+                        Console.WriteLine("Введите конечную дату в формате yyyy-MM-dd");
+                        DateTime endDate = Convert.ToDateTime(Console.ReadLine());
+                        Order[] myOrders = classesClient.getOrdersByDate(currentUser.id, startDate, endDate);
+                        foreach (Order order in myOrders)
+                        {
+                            Console.WriteLine("{0}||{1}||{2}||{3}||{4}||{5}", Convert.ToString(order.id), order.client.name, order.service.name, Convert.ToString(order.count), Convert.ToString(order.date), order.state);
+                        }
                     }
                 }
 
                 if (userChoice == 11 && isAuth == 1)
                 {
-                    Console.WriteLine("Введите новый пароль");
-                    string pwd = Console.ReadLine();
-                    classesClient.changePwd(currentUser.id, pwd);
-                    Console.WriteLine("Пароль успешно изменён");
+                    if (classesClient.checkToken(currentUser) == true)
+                    {
+                        Console.WriteLine("Введите новый пароль");
+                        string pwd = Console.ReadLine();
+                        classesClient.changePwd(currentUser.id, pwd);
+                        Console.WriteLine("Пароль успешно изменён");
+                    }
                 }
 
                 if (userChoice == 12 && isAuth == 1)
                 {
-                    classesClient.logout(currentUser.id);
-                    isAuth = 0;
+                    if (classesClient.checkToken(currentUser) == true)
+                    {
+                        classesClient.logout(currentUser.id);
+                        isAuth = 0;
+                    }
                 }
 
                 if (isAuth == 1)
