@@ -7,6 +7,24 @@
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/Typography_WCF" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IClasses_GetChatMessagesOfOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetChatMessagesOfOrder" />
+  </wsdl:message>
+  <wsdl:message name="IClasses_GetChatMessagesOfOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetChatMessagesOfOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClasses_getCurrentUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:getCurrentUser" />
+  </wsdl:message>
+  <wsdl:message name="IClasses_getCurrentUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getCurrentUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClasses_getOrdersOfCurrentUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:getOrdersOfCurrentUser" />
+  </wsdl:message>
+  <wsdl:message name="IClasses_getOrdersOfCurrentUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getOrdersOfCurrentUserResponse" />
+  </wsdl:message>
   <wsdl:message name="IClasses_checkToken_InputMessage">
     <wsdl:part name="parameters" element="tns:checkToken" />
   </wsdl:message>
@@ -104,6 +122,18 @@
     <wsdl:part name="parameters" element="tns:getServicesResponse" />
   </wsdl:message>
   <wsdl:portType name="IClasses">
+    <wsdl:operation name="GetChatMessagesOfOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClasses/GetChatMessagesOfOrder" message="tns:IClasses_GetChatMessagesOfOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClasses/GetChatMessagesOfOrderResponse" message="tns:IClasses_GetChatMessagesOfOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getCurrentUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClasses/getCurrentUser" message="tns:IClasses_getCurrentUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClasses/getCurrentUserResponse" message="tns:IClasses_getCurrentUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getOrdersOfCurrentUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClasses/getOrdersOfCurrentUser" message="tns:IClasses_getOrdersOfCurrentUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClasses/getOrdersOfCurrentUserResponse" message="tns:IClasses_getOrdersOfCurrentUser_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="checkToken">
       <wsdl:input wsaw:Action="http://tempuri.org/IClasses/checkToken" message="tns:IClasses_checkToken_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClasses/checkTokenResponse" message="tns:IClasses_checkToken_OutputMessage" />
@@ -171,6 +201,33 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IClasses" type="tns:IClasses">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetChatMessagesOfOrder">
+      <soap:operation soapAction="http://tempuri.org/IClasses/GetChatMessagesOfOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCurrentUser">
+      <soap:operation soapAction="http://tempuri.org/IClasses/getCurrentUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrdersOfCurrentUser">
+      <soap:operation soapAction="http://tempuri.org/IClasses/getOrdersOfCurrentUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="checkToken">
       <soap:operation soapAction="http://tempuri.org/IClasses/checkToken" style="document" />
       <wsdl:input>

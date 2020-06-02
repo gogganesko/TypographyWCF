@@ -10,6 +10,15 @@ namespace Typography_WCF
     public interface IClasses
     {
         [OperationContract]
+        List<ChatMessage> GetChatMessagesOfOrder(Order order);
+
+        [OperationContract]
+        Person getCurrentUser(string login, string password);
+
+        [OperationContract]
+        List<Order> getOrdersOfCurrentUser(Person user);
+
+        [OperationContract]
         bool checkToken(Person user);
 
         [OperationContract]

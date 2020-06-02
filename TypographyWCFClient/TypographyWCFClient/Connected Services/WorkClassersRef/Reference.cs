@@ -15,6 +15,131 @@ namespace TypographyWCFClient.WorkClassersRef {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Order", Namespace="http://schemas.datacontract.org/2004/07/Typography_WCF")]
+    [System.SerializableAttribute()]
+    public partial class Order : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TypographyWCFClient.WorkClassersRef.Person clientField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int countField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime dateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TypographyWCFClient.WorkClassersRef.Service serviceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string stateField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TypographyWCFClient.WorkClassersRef.Person client {
+            get {
+                return this.clientField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.clientField, value) != true)) {
+                    this.clientField = value;
+                    this.RaisePropertyChanged("client");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int count {
+            get {
+                return this.countField;
+            }
+            set {
+                if ((this.countField.Equals(value) != true)) {
+                    this.countField = value;
+                    this.RaisePropertyChanged("count");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime date {
+            get {
+                return this.dateField;
+            }
+            set {
+                if ((this.dateField.Equals(value) != true)) {
+                    this.dateField = value;
+                    this.RaisePropertyChanged("date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                if ((this.idField.Equals(value) != true)) {
+                    this.idField = value;
+                    this.RaisePropertyChanged("id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TypographyWCFClient.WorkClassersRef.Service service {
+            get {
+                return this.serviceField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.serviceField, value) != true)) {
+                    this.serviceField = value;
+                    this.RaisePropertyChanged("service");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string state {
+            get {
+                return this.stateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.stateField, value) != true)) {
+                    this.stateField = value;
+                    this.RaisePropertyChanged("state");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Person", Namespace="http://schemas.datacontract.org/2004/07/Typography_WCF")]
     [System.SerializableAttribute()]
     public partial class Person : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -204,240 +329,6 @@ namespace TypographyWCFClient.WorkClassersRef {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ChatMessage", Namespace="http://schemas.datacontract.org/2004/07/Typography_WCF")]
-    [System.SerializableAttribute()]
-    public partial class ChatMessage : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TypographyWCFClient.WorkClassersRef.Person authorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime dateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string messageField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TypographyWCFClient.WorkClassersRef.Order orderField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public TypographyWCFClient.WorkClassersRef.Person author {
-            get {
-                return this.authorField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.authorField, value) != true)) {
-                    this.authorField = value;
-                    this.RaisePropertyChanged("author");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime date {
-            get {
-                return this.dateField;
-            }
-            set {
-                if ((this.dateField.Equals(value) != true)) {
-                    this.dateField = value;
-                    this.RaisePropertyChanged("date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                if ((this.idField.Equals(value) != true)) {
-                    this.idField = value;
-                    this.RaisePropertyChanged("id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string message {
-            get {
-                return this.messageField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.messageField, value) != true)) {
-                    this.messageField = value;
-                    this.RaisePropertyChanged("message");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public TypographyWCFClient.WorkClassersRef.Order order {
-            get {
-                return this.orderField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.orderField, value) != true)) {
-                    this.orderField = value;
-                    this.RaisePropertyChanged("order");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Order", Namespace="http://schemas.datacontract.org/2004/07/Typography_WCF")]
-    [System.SerializableAttribute()]
-    public partial class Order : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TypographyWCFClient.WorkClassersRef.Person clientField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int countField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime dateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TypographyWCFClient.WorkClassersRef.Service serviceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string stateField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public TypographyWCFClient.WorkClassersRef.Person client {
-            get {
-                return this.clientField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.clientField, value) != true)) {
-                    this.clientField = value;
-                    this.RaisePropertyChanged("client");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int count {
-            get {
-                return this.countField;
-            }
-            set {
-                if ((this.countField.Equals(value) != true)) {
-                    this.countField = value;
-                    this.RaisePropertyChanged("count");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime date {
-            get {
-                return this.dateField;
-            }
-            set {
-                if ((this.dateField.Equals(value) != true)) {
-                    this.dateField = value;
-                    this.RaisePropertyChanged("date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                if ((this.idField.Equals(value) != true)) {
-                    this.idField = value;
-                    this.RaisePropertyChanged("id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public TypographyWCFClient.WorkClassersRef.Service service {
-            get {
-                return this.serviceField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.serviceField, value) != true)) {
-                    this.serviceField = value;
-                    this.RaisePropertyChanged("service");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string state {
-            get {
-                return this.stateField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.stateField, value) != true)) {
-                    this.stateField = value;
-                    this.RaisePropertyChanged("state");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Service", Namespace="http://schemas.datacontract.org/2004/07/Typography_WCF")]
     [System.SerializableAttribute()]
     public partial class Service : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -608,6 +499,115 @@ namespace TypographyWCFClient.WorkClassersRef {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ChatMessage", Namespace="http://schemas.datacontract.org/2004/07/Typography_WCF")]
+    [System.SerializableAttribute()]
+    public partial class ChatMessage : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TypographyWCFClient.WorkClassersRef.Person authorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime dateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string messageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TypographyWCFClient.WorkClassersRef.Order orderField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TypographyWCFClient.WorkClassersRef.Person author {
+            get {
+                return this.authorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.authorField, value) != true)) {
+                    this.authorField = value;
+                    this.RaisePropertyChanged("author");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime date {
+            get {
+                return this.dateField;
+            }
+            set {
+                if ((this.dateField.Equals(value) != true)) {
+                    this.dateField = value;
+                    this.RaisePropertyChanged("date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                if ((this.idField.Equals(value) != true)) {
+                    this.idField = value;
+                    this.RaisePropertyChanged("id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string message {
+            get {
+                return this.messageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.messageField, value) != true)) {
+                    this.messageField = value;
+                    this.RaisePropertyChanged("message");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TypographyWCFClient.WorkClassersRef.Order order {
+            get {
+                return this.orderField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.orderField, value) != true)) {
+                    this.orderField = value;
+                    this.RaisePropertyChanged("order");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Sale", Namespace="http://schemas.datacontract.org/2004/07/Typography_WCF")]
     [System.SerializableAttribute()]
     public partial class Sale : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -735,6 +735,24 @@ namespace TypographyWCFClient.WorkClassersRef {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WorkClassersRef.IClasses")]
     public interface IClasses {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/GetChatMessagesOfOrder", ReplyAction="http://tempuri.org/IClasses/GetChatMessagesOfOrderResponse")]
+        TypographyWCFClient.WorkClassersRef.ChatMessage[] GetChatMessagesOfOrder(TypographyWCFClient.WorkClassersRef.Order order);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/GetChatMessagesOfOrder", ReplyAction="http://tempuri.org/IClasses/GetChatMessagesOfOrderResponse")]
+        System.Threading.Tasks.Task<TypographyWCFClient.WorkClassersRef.ChatMessage[]> GetChatMessagesOfOrderAsync(TypographyWCFClient.WorkClassersRef.Order order);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/getCurrentUser", ReplyAction="http://tempuri.org/IClasses/getCurrentUserResponse")]
+        TypographyWCFClient.WorkClassersRef.Person getCurrentUser(string login, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/getCurrentUser", ReplyAction="http://tempuri.org/IClasses/getCurrentUserResponse")]
+        System.Threading.Tasks.Task<TypographyWCFClient.WorkClassersRef.Person> getCurrentUserAsync(string login, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/getOrdersOfCurrentUser", ReplyAction="http://tempuri.org/IClasses/getOrdersOfCurrentUserResponse")]
+        TypographyWCFClient.WorkClassersRef.Order[] getOrdersOfCurrentUser(TypographyWCFClient.WorkClassersRef.Person user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/getOrdersOfCurrentUser", ReplyAction="http://tempuri.org/IClasses/getOrdersOfCurrentUserResponse")]
+        System.Threading.Tasks.Task<TypographyWCFClient.WorkClassersRef.Order[]> getOrdersOfCurrentUserAsync(TypographyWCFClient.WorkClassersRef.Person user);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/checkToken", ReplyAction="http://tempuri.org/IClasses/checkTokenResponse")]
         bool checkToken(TypographyWCFClient.WorkClassersRef.Person user);
         
@@ -857,6 +875,30 @@ namespace TypographyWCFClient.WorkClassersRef {
         
         public ClassesClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public TypographyWCFClient.WorkClassersRef.ChatMessage[] GetChatMessagesOfOrder(TypographyWCFClient.WorkClassersRef.Order order) {
+            return base.Channel.GetChatMessagesOfOrder(order);
+        }
+        
+        public System.Threading.Tasks.Task<TypographyWCFClient.WorkClassersRef.ChatMessage[]> GetChatMessagesOfOrderAsync(TypographyWCFClient.WorkClassersRef.Order order) {
+            return base.Channel.GetChatMessagesOfOrderAsync(order);
+        }
+        
+        public TypographyWCFClient.WorkClassersRef.Person getCurrentUser(string login, string password) {
+            return base.Channel.getCurrentUser(login, password);
+        }
+        
+        public System.Threading.Tasks.Task<TypographyWCFClient.WorkClassersRef.Person> getCurrentUserAsync(string login, string password) {
+            return base.Channel.getCurrentUserAsync(login, password);
+        }
+        
+        public TypographyWCFClient.WorkClassersRef.Order[] getOrdersOfCurrentUser(TypographyWCFClient.WorkClassersRef.Person user) {
+            return base.Channel.getOrdersOfCurrentUser(user);
+        }
+        
+        public System.Threading.Tasks.Task<TypographyWCFClient.WorkClassersRef.Order[]> getOrdersOfCurrentUserAsync(TypographyWCFClient.WorkClassersRef.Person user) {
+            return base.Channel.getOrdersOfCurrentUserAsync(user);
         }
         
         public bool checkToken(TypographyWCFClient.WorkClassersRef.Person user) {

@@ -203,6 +203,24 @@ namespace Typography_WCF
             }
         }
 
+        public Person getCurrentUser(string login, string password)
+        {
+            Person currentUser = getPersons().First(x => x.login == login && x.password == password);
+            return currentUser;
+        }
+
+        public List<Order> getOrdersOfCurrentUser(Person user)
+        {
+            List<Order> userOrders = getOrders().FindAll(x => x.client.id == user.id);
+            return userOrders;
+        }
+
+        public List<ChatMessage> GetChatMessagesOfOrder(Order order)
+        {
+            List<ChatMessage> chatMessages = getChatMessages().FindAll(x => x.order.id == order.id);
+            return chatMessages;
+        }
+
         public void changePwd(int personID, string password)//функция смены пароля
         {
             List<Person> allPersons = getPersons();

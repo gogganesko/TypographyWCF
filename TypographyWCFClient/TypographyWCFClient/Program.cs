@@ -54,7 +54,7 @@ namespace TypographyWCFClient
                         if (classesClient.auth(login, password) == 1)
                         {
                             isAuth = 1;
-                            currentUser = classesClient.getPersons().First(x => x.login == login && x.password == password);
+                            currentUser = classesClient.getCurrentUser(login, password);                            
                             Console.WriteLine("Вы успешно авторизовались!");
                         }
                         else
@@ -69,19 +69,12 @@ namespace TypographyWCFClient
                     Environment.Exit(0);
                 }
 
+                //getordersByUser на стороне сервера
                 if (userChoice == 5 && isAuth == 1)
                 {
                     if (classesClient.checkToken(currentUser) == true)
                     {
-                        Order[] orders = classesClient.getOrders();
-                        List<Order> myOrders = new List<Order>();
-                        foreach (Order order in orders)
-                        {
-                            if (order.client.id == currentUser.id)
-                            {
-                                myOrders.Add(order);
-                            }
-                        }
+                        Order[] myOrders = classesClient.getOrdersOfCurrentUser(currentUser);                        
                         Console.WriteLine("ID||Клиент||Услуга||Количество||Дата||Статус");
                         foreach (Order order in myOrders)
                         {
@@ -119,15 +112,7 @@ namespace TypographyWCFClient
                 {
                     if (classesClient.checkToken(currentUser) == true)
                     {
-                        Order[] orders = classesClient.getOrders();
-                        List<Order> myOrders = new List<Order>();
-                        foreach (Order order in orders)
-                        {
-                            if (order.client.id == currentUser.id)
-                            {
-                                myOrders.Add(order);
-                            }
-                        }
+                        Order[] myOrders = classesClient.getOrdersOfCurrentUser(currentUser);
                         Console.WriteLine("ID||Клиент||Услуга||Количество||Дата||Статус");
                         foreach (Order order in myOrders)
                         {
@@ -135,7 +120,7 @@ namespace TypographyWCFClient
                         }
                         Console.WriteLine("Выберите ID заказа для показа подробной информации");
                         int orderID = Convert.ToInt32(Console.ReadLine());
-                        Order o = myOrders.Find(x => x.id == orderID);
+                        Order o = myOrders.First(x => x.id == orderID);
                         Console.WriteLine("Подробная информация о заказе:\nID:{0}\nВладелец:{1}\nУслуга:{2}\nКоличество:{3}\nДата:{4}\nСтатус:{5}", Convert.ToString(o.id), o.client.name, o.service.name, Convert.ToString(o.count), Convert.ToString(o.date), o.state);
                     }
                 }
@@ -146,15 +131,7 @@ namespace TypographyWCFClient
                     {
                         ChatMessage chatMessage = new ChatMessage();
                         chatMessage.author = currentUser;
-                        Order[] orders = classesClient.getOrders();
-                        List<Order> myOrders = new List<Order>();
-                        foreach (Order order in orders)
-                        {
-                            if (order.client.id == currentUser.id)
-                            {
-                                myOrders.Add(order);
-                            }
-                        }
+                        Order[] myOrders = classesClient.getOrdersOfCurrentUser(currentUser);
                         Console.WriteLine("ID||Клиент||Услуга||Количество||Дата||Статус");
                         foreach (Order order in myOrders)
                         {
@@ -162,7 +139,7 @@ namespace TypographyWCFClient
                         }
                         Console.WriteLine("Выберите заказ в который нужно отправить сообщение");
                         int orderID = Convert.ToInt32(Console.ReadLine());
-                        chatMessage.order = myOrders.Find(x => x.id == orderID);
+                        chatMessage.order = myOrders.First(x => x.id == orderID);
                         Console.WriteLine("Введите текст сообщения");
                         chatMessage.message = Convert.ToString(Console.ReadLine());
                         chatMessage.date = DateTime.Now;
@@ -175,15 +152,7 @@ namespace TypographyWCFClient
                 {
                     if (classesClient.checkToken(currentUser) == true)
                     {
-                        Order[] orders = classesClient.getOrders();
-                        List<Order> myOrders = new List<Order>();
-                        foreach (Order order in orders)
-                        {
-                            if (order.client.id == currentUser.id)
-                            {
-                                myOrders.Add(order);
-                            }
-                        }
+                        Order[] myOrders = classesClient.getOrdersOfCurrentUser(currentUser);
                         Console.WriteLine("ID||Клиент||Услуга||Количество||Дата||Статус");
                         foreach (Order order in myOrders)
                         {
@@ -191,15 +160,8 @@ namespace TypographyWCFClient
                         }
                         Console.WriteLine("Выберите нужный заказ");
                         int orderID = Convert.ToInt32(Console.ReadLine());
-                        ChatMessage[] chatMessages = classesClient.getChatMessages();
-                        List<ChatMessage> myChatMessages = new List<ChatMessage>();
-                        foreach (ChatMessage cm in chatMessages)
-                        {
-                            if (cm.order.id == orderID)
-                            {
-                                myChatMessages.Add(cm);
-                            }
-                        }
+                        Order o = myOrders.First(x => x.id == orderID);
+                        ChatMessage[] myChatMessages = classesClient.GetChatMessagesOfOrder(o);
                         Console.WriteLine("ID||Автор||ID Заказа||Текст||Дата");
                         foreach (ChatMessage cm in myChatMessages)
                         {
