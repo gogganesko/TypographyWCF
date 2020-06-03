@@ -71,9 +71,6 @@
     <None Include="Connected Services\WorkClassersRef\TypographyWCFClient.WorkClassersRef.Person.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\WorkClassersRef\TypographyWCFClient.WorkClassersRef.PrintType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\WorkClassersRef\TypographyWCFClient.WorkClassersRef.Sale.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

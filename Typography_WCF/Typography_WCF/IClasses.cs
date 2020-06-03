@@ -24,15 +24,15 @@ namespace Typography_WCF
         [OperationContract]
         void changePwd(int personID, string password);
 
-        [OperationContract]
-        void checkDB();
+      //  [OperationContract]
+        //void checkDB();
 
         [OperationContract]
         void addChatMessage(ChatMessage chatMessage);
-        [OperationContract]
-        void delChatMessage(int id);
-        [OperationContract]
-        List<ChatMessage> getChatMessages();
+       // [OperationContract]
+       // void delChatMessage(int id);
+        //[OperationContract]
+       // List<ChatMessage> getChatMessages();
 
         [OperationContract]
         void addOrder(Order order);
@@ -40,14 +40,14 @@ namespace Typography_WCF
         [OperationContract]
         List<Order> getOrdersByDate(int PersonID, DateTime startDate, DateTime endDate);
 
-        [OperationContract]
-        List<Order> getOrders();
+       // [OperationContract]
+       // List<Order> getOrders();
 
-        [OperationContract]
-        List<Person> getPersons();
+       // [OperationContract]
+       // List<Person> getPersons();
 
-        [OperationContract]
-        void addPerson(Person person);
+        //[OperationContract]
+       // void addPerson(Person person);
 
         [OperationContract]
         int auth(String login, string password);
@@ -55,8 +55,8 @@ namespace Typography_WCF
         [OperationContract]
         int logout(int personID);
 
-        [OperationContract]
-        List<PrintType> getPrintTypes();
+        //[OperationContract]
+       // List<PrintType> getPrintTypes();
 
         [OperationContract]
         List<Sale> getSales();

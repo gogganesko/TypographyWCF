@@ -37,29 +37,11 @@
   <wsdl:message name="IClasses_changePwd_OutputMessage">
     <wsdl:part name="parameters" element="tns:changePwdResponse" />
   </wsdl:message>
-  <wsdl:message name="IClasses_checkDB_InputMessage">
-    <wsdl:part name="parameters" element="tns:checkDB" />
-  </wsdl:message>
-  <wsdl:message name="IClasses_checkDB_OutputMessage">
-    <wsdl:part name="parameters" element="tns:checkDBResponse" />
-  </wsdl:message>
   <wsdl:message name="IClasses_addChatMessage_InputMessage">
     <wsdl:part name="parameters" element="tns:addChatMessage" />
   </wsdl:message>
   <wsdl:message name="IClasses_addChatMessage_OutputMessage">
     <wsdl:part name="parameters" element="tns:addChatMessageResponse" />
-  </wsdl:message>
-  <wsdl:message name="IClasses_delChatMessage_InputMessage">
-    <wsdl:part name="parameters" element="tns:delChatMessage" />
-  </wsdl:message>
-  <wsdl:message name="IClasses_delChatMessage_OutputMessage">
-    <wsdl:part name="parameters" element="tns:delChatMessageResponse" />
-  </wsdl:message>
-  <wsdl:message name="IClasses_getChatMessages_InputMessage">
-    <wsdl:part name="parameters" element="tns:getChatMessages" />
-  </wsdl:message>
-  <wsdl:message name="IClasses_getChatMessages_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getChatMessagesResponse" />
   </wsdl:message>
   <wsdl:message name="IClasses_addOrder_InputMessage">
     <wsdl:part name="parameters" element="tns:addOrder" />
@@ -73,24 +55,6 @@
   <wsdl:message name="IClasses_getOrdersByDate_OutputMessage">
     <wsdl:part name="parameters" element="tns:getOrdersByDateResponse" />
   </wsdl:message>
-  <wsdl:message name="IClasses_getOrders_InputMessage">
-    <wsdl:part name="parameters" element="tns:getOrders" />
-  </wsdl:message>
-  <wsdl:message name="IClasses_getOrders_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getOrdersResponse" />
-  </wsdl:message>
-  <wsdl:message name="IClasses_getPersons_InputMessage">
-    <wsdl:part name="parameters" element="tns:getPersons" />
-  </wsdl:message>
-  <wsdl:message name="IClasses_getPersons_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getPersonsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IClasses_addPerson_InputMessage">
-    <wsdl:part name="parameters" element="tns:addPerson" />
-  </wsdl:message>
-  <wsdl:message name="IClasses_addPerson_OutputMessage">
-    <wsdl:part name="parameters" element="tns:addPersonResponse" />
-  </wsdl:message>
   <wsdl:message name="IClasses_auth_InputMessage">
     <wsdl:part name="parameters" element="tns:auth" />
   </wsdl:message>
@@ -102,12 +66,6 @@
   </wsdl:message>
   <wsdl:message name="IClasses_logout_OutputMessage">
     <wsdl:part name="parameters" element="tns:logoutResponse" />
-  </wsdl:message>
-  <wsdl:message name="IClasses_getPrintTypes_InputMessage">
-    <wsdl:part name="parameters" element="tns:getPrintTypes" />
-  </wsdl:message>
-  <wsdl:message name="IClasses_getPrintTypes_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getPrintTypesResponse" />
   </wsdl:message>
   <wsdl:message name="IClasses_getSales_InputMessage">
     <wsdl:part name="parameters" element="tns:getSales" />
@@ -142,21 +100,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IClasses/changePwd" message="tns:IClasses_changePwd_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClasses/changePwdResponse" message="tns:IClasses_changePwd_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="checkDB">
-      <wsdl:input wsaw:Action="http://tempuri.org/IClasses/checkDB" message="tns:IClasses_checkDB_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IClasses/checkDBResponse" message="tns:IClasses_checkDB_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="addChatMessage">
       <wsdl:input wsaw:Action="http://tempuri.org/IClasses/addChatMessage" message="tns:IClasses_addChatMessage_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClasses/addChatMessageResponse" message="tns:IClasses_addChatMessage_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="delChatMessage">
-      <wsdl:input wsaw:Action="http://tempuri.org/IClasses/delChatMessage" message="tns:IClasses_delChatMessage_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IClasses/delChatMessageResponse" message="tns:IClasses_delChatMessage_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getChatMessages">
-      <wsdl:input wsaw:Action="http://tempuri.org/IClasses/getChatMessages" message="tns:IClasses_getChatMessages_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IClasses/getChatMessagesResponse" message="tns:IClasses_getChatMessages_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="addOrder">
       <wsdl:input wsaw:Action="http://tempuri.org/IClasses/addOrder" message="tns:IClasses_addOrder_InputMessage" />
@@ -166,18 +112,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IClasses/getOrdersByDate" message="tns:IClasses_getOrdersByDate_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClasses/getOrdersByDateResponse" message="tns:IClasses_getOrdersByDate_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="getOrders">
-      <wsdl:input wsaw:Action="http://tempuri.org/IClasses/getOrders" message="tns:IClasses_getOrders_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IClasses/getOrdersResponse" message="tns:IClasses_getOrders_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getPersons">
-      <wsdl:input wsaw:Action="http://tempuri.org/IClasses/getPersons" message="tns:IClasses_getPersons_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IClasses/getPersonsResponse" message="tns:IClasses_getPersons_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="addPerson">
-      <wsdl:input wsaw:Action="http://tempuri.org/IClasses/addPerson" message="tns:IClasses_addPerson_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IClasses/addPersonResponse" message="tns:IClasses_addPerson_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="auth">
       <wsdl:input wsaw:Action="http://tempuri.org/IClasses/auth" message="tns:IClasses_auth_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClasses/authResponse" message="tns:IClasses_auth_OutputMessage" />
@@ -185,10 +119,6 @@
     <wsdl:operation name="logout">
       <wsdl:input wsaw:Action="http://tempuri.org/IClasses/logout" message="tns:IClasses_logout_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClasses/logoutResponse" message="tns:IClasses_logout_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getPrintTypes">
-      <wsdl:input wsaw:Action="http://tempuri.org/IClasses/getPrintTypes" message="tns:IClasses_getPrintTypes_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IClasses/getPrintTypesResponse" message="tns:IClasses_getPrintTypes_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="getSales">
       <wsdl:input wsaw:Action="http://tempuri.org/IClasses/getSales" message="tns:IClasses_getSales_InputMessage" />
@@ -246,35 +176,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="checkDB">
-      <soap:operation soapAction="http://tempuri.org/IClasses/checkDB" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="addChatMessage">
       <soap:operation soapAction="http://tempuri.org/IClasses/addChatMessage" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="delChatMessage">
-      <soap:operation soapAction="http://tempuri.org/IClasses/delChatMessage" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getChatMessages">
-      <soap:operation soapAction="http://tempuri.org/IClasses/getChatMessages" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -300,33 +203,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getOrders">
-      <soap:operation soapAction="http://tempuri.org/IClasses/getOrders" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getPersons">
-      <soap:operation soapAction="http://tempuri.org/IClasses/getPersons" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="addPerson">
-      <soap:operation soapAction="http://tempuri.org/IClasses/addPerson" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="auth">
       <soap:operation soapAction="http://tempuri.org/IClasses/auth" style="document" />
       <wsdl:input>
@@ -338,15 +214,6 @@
     </wsdl:operation>
     <wsdl:operation name="logout">
       <soap:operation soapAction="http://tempuri.org/IClasses/logout" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getPrintTypes">
-      <soap:operation soapAction="http://tempuri.org/IClasses/getPrintTypes" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

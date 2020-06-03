@@ -71,8 +71,8 @@ namespace Typography_WCF
         }
 
         //public int globalPrintTypeID = 0;
-        public List<PrintType> printTypes = new List<PrintType>();
-        public List<PrintType> getPrintTypes()
+        private List<PrintType> printTypes = new List<PrintType>();
+        private List<PrintType> getPrintTypes()
         {
             using (SQLiteConnection Connect = new SQLiteConnection(@"Data Source=Typography.db; Version=3"))
             {
@@ -94,8 +94,8 @@ namespace Typography_WCF
         }
 
         //public int globaPesronlID = 0;
-        public List<Person> persons = new List<Person>();
-        public List<Person> getPersons()
+        private List<Person> persons = new List<Person>();
+        private List<Person> getPersons()
         {
             using (SQLiteConnection Connect = new SQLiteConnection(@"Data Source=Typography.db; Version=3"))
             {
@@ -130,13 +130,6 @@ namespace Typography_WCF
             }
         }
 
-        public void addPerson(Person person)
-        {
-            //globalPrintTypeID++;
-            //person.id = globalPrintTypeID;
-            //persons.Add(person);
-
-        }
 
         public int auth(string login, string password)//функция авторизации, возвращает 1 - если авторизован, 0 - ошибка
         {
@@ -237,8 +230,8 @@ namespace Typography_WCF
         }
 
 
-        public List<Order> orders = new List<Order>();
-        public List<Order> getOrders()
+        private List<Order> orders = new List<Order>();
+        private List<Order> getOrders()
         {
             using (SQLiteConnection Connect = new SQLiteConnection(@"Data Source=Typography.db; Version=3"))
             {
@@ -289,8 +282,8 @@ namespace Typography_WCF
         }
 
         
-        public List<ChatMessage> chatMessages = new List<ChatMessage>();
-        public List<ChatMessage> getChatMessages()
+        private List<ChatMessage> chatMessages = new List<ChatMessage>();
+        private List<ChatMessage> getChatMessages()
         {
             using (SQLiteConnection Connect = new SQLiteConnection(@"Data Source=Typography.db; Version=3"))
             {
@@ -332,12 +325,9 @@ namespace Typography_WCF
             }
         }
 
-        public void delChatMessage(int id)
-        {
-            chatMessages.Remove(chatMessages.Find(e => e.id.Equals(id)));
-        }
 
-        public void checkDB()
+
+        private void checkDB()
         {
             if (!File.Exists(@"Typography.db")) // если базы данных нету, то...
             {

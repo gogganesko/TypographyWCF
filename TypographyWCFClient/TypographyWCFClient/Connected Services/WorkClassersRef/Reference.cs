@@ -765,29 +765,11 @@ namespace TypographyWCFClient.WorkClassersRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/changePwd", ReplyAction="http://tempuri.org/IClasses/changePwdResponse")]
         System.Threading.Tasks.Task changePwdAsync(int personID, string password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/checkDB", ReplyAction="http://tempuri.org/IClasses/checkDBResponse")]
-        void checkDB();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/checkDB", ReplyAction="http://tempuri.org/IClasses/checkDBResponse")]
-        System.Threading.Tasks.Task checkDBAsync();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/addChatMessage", ReplyAction="http://tempuri.org/IClasses/addChatMessageResponse")]
         void addChatMessage(TypographyWCFClient.WorkClassersRef.ChatMessage chatMessage);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/addChatMessage", ReplyAction="http://tempuri.org/IClasses/addChatMessageResponse")]
         System.Threading.Tasks.Task addChatMessageAsync(TypographyWCFClient.WorkClassersRef.ChatMessage chatMessage);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/delChatMessage", ReplyAction="http://tempuri.org/IClasses/delChatMessageResponse")]
-        void delChatMessage(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/delChatMessage", ReplyAction="http://tempuri.org/IClasses/delChatMessageResponse")]
-        System.Threading.Tasks.Task delChatMessageAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/getChatMessages", ReplyAction="http://tempuri.org/IClasses/getChatMessagesResponse")]
-        TypographyWCFClient.WorkClassersRef.ChatMessage[] getChatMessages();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/getChatMessages", ReplyAction="http://tempuri.org/IClasses/getChatMessagesResponse")]
-        System.Threading.Tasks.Task<TypographyWCFClient.WorkClassersRef.ChatMessage[]> getChatMessagesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/addOrder", ReplyAction="http://tempuri.org/IClasses/addOrderResponse")]
         void addOrder(TypographyWCFClient.WorkClassersRef.Order order);
@@ -801,24 +783,6 @@ namespace TypographyWCFClient.WorkClassersRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/getOrdersByDate", ReplyAction="http://tempuri.org/IClasses/getOrdersByDateResponse")]
         System.Threading.Tasks.Task<TypographyWCFClient.WorkClassersRef.Order[]> getOrdersByDateAsync(int PersonID, System.DateTime startDate, System.DateTime endDate);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/getOrders", ReplyAction="http://tempuri.org/IClasses/getOrdersResponse")]
-        TypographyWCFClient.WorkClassersRef.Order[] getOrders();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/getOrders", ReplyAction="http://tempuri.org/IClasses/getOrdersResponse")]
-        System.Threading.Tasks.Task<TypographyWCFClient.WorkClassersRef.Order[]> getOrdersAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/getPersons", ReplyAction="http://tempuri.org/IClasses/getPersonsResponse")]
-        TypographyWCFClient.WorkClassersRef.Person[] getPersons();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/getPersons", ReplyAction="http://tempuri.org/IClasses/getPersonsResponse")]
-        System.Threading.Tasks.Task<TypographyWCFClient.WorkClassersRef.Person[]> getPersonsAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/addPerson", ReplyAction="http://tempuri.org/IClasses/addPersonResponse")]
-        void addPerson(TypographyWCFClient.WorkClassersRef.Person person);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/addPerson", ReplyAction="http://tempuri.org/IClasses/addPersonResponse")]
-        System.Threading.Tasks.Task addPersonAsync(TypographyWCFClient.WorkClassersRef.Person person);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/auth", ReplyAction="http://tempuri.org/IClasses/authResponse")]
         int auth(string login, string password);
         
@@ -830,12 +794,6 @@ namespace TypographyWCFClient.WorkClassersRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/logout", ReplyAction="http://tempuri.org/IClasses/logoutResponse")]
         System.Threading.Tasks.Task<int> logoutAsync(int personID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/getPrintTypes", ReplyAction="http://tempuri.org/IClasses/getPrintTypesResponse")]
-        TypographyWCFClient.WorkClassersRef.PrintType[] getPrintTypes();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/getPrintTypes", ReplyAction="http://tempuri.org/IClasses/getPrintTypesResponse")]
-        System.Threading.Tasks.Task<TypographyWCFClient.WorkClassersRef.PrintType[]> getPrintTypesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/getSales", ReplyAction="http://tempuri.org/IClasses/getSalesResponse")]
         TypographyWCFClient.WorkClassersRef.Sale[] getSales();
@@ -917,36 +875,12 @@ namespace TypographyWCFClient.WorkClassersRef {
             return base.Channel.changePwdAsync(personID, password);
         }
         
-        public void checkDB() {
-            base.Channel.checkDB();
-        }
-        
-        public System.Threading.Tasks.Task checkDBAsync() {
-            return base.Channel.checkDBAsync();
-        }
-        
         public void addChatMessage(TypographyWCFClient.WorkClassersRef.ChatMessage chatMessage) {
             base.Channel.addChatMessage(chatMessage);
         }
         
         public System.Threading.Tasks.Task addChatMessageAsync(TypographyWCFClient.WorkClassersRef.ChatMessage chatMessage) {
             return base.Channel.addChatMessageAsync(chatMessage);
-        }
-        
-        public void delChatMessage(int id) {
-            base.Channel.delChatMessage(id);
-        }
-        
-        public System.Threading.Tasks.Task delChatMessageAsync(int id) {
-            return base.Channel.delChatMessageAsync(id);
-        }
-        
-        public TypographyWCFClient.WorkClassersRef.ChatMessage[] getChatMessages() {
-            return base.Channel.getChatMessages();
-        }
-        
-        public System.Threading.Tasks.Task<TypographyWCFClient.WorkClassersRef.ChatMessage[]> getChatMessagesAsync() {
-            return base.Channel.getChatMessagesAsync();
         }
         
         public void addOrder(TypographyWCFClient.WorkClassersRef.Order order) {
@@ -965,30 +899,6 @@ namespace TypographyWCFClient.WorkClassersRef {
             return base.Channel.getOrdersByDateAsync(PersonID, startDate, endDate);
         }
         
-        public TypographyWCFClient.WorkClassersRef.Order[] getOrders() {
-            return base.Channel.getOrders();
-        }
-        
-        public System.Threading.Tasks.Task<TypographyWCFClient.WorkClassersRef.Order[]> getOrdersAsync() {
-            return base.Channel.getOrdersAsync();
-        }
-        
-        public TypographyWCFClient.WorkClassersRef.Person[] getPersons() {
-            return base.Channel.getPersons();
-        }
-        
-        public System.Threading.Tasks.Task<TypographyWCFClient.WorkClassersRef.Person[]> getPersonsAsync() {
-            return base.Channel.getPersonsAsync();
-        }
-        
-        public void addPerson(TypographyWCFClient.WorkClassersRef.Person person) {
-            base.Channel.addPerson(person);
-        }
-        
-        public System.Threading.Tasks.Task addPersonAsync(TypographyWCFClient.WorkClassersRef.Person person) {
-            return base.Channel.addPersonAsync(person);
-        }
-        
         public int auth(string login, string password) {
             return base.Channel.auth(login, password);
         }
@@ -1003,14 +913,6 @@ namespace TypographyWCFClient.WorkClassersRef {
         
         public System.Threading.Tasks.Task<int> logoutAsync(int personID) {
             return base.Channel.logoutAsync(personID);
-        }
-        
-        public TypographyWCFClient.WorkClassersRef.PrintType[] getPrintTypes() {
-            return base.Channel.getPrintTypes();
-        }
-        
-        public System.Threading.Tasks.Task<TypographyWCFClient.WorkClassersRef.PrintType[]> getPrintTypesAsync() {
-            return base.Channel.getPrintTypesAsync();
         }
         
         public TypographyWCFClient.WorkClassersRef.Sale[] getSales() {
