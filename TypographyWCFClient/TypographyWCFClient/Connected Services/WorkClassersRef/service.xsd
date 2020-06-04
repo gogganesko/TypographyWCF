@@ -44,20 +44,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="checkToken">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Typography_WCF" minOccurs="0" name="user" nillable="true" type="q6:Person" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="checkTokenResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="checkTokenResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="changePwd">
     <xs:complexType>
       <xs:sequence>
@@ -74,7 +60,7 @@
   <xs:element name="addChatMessage">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Typography_WCF" minOccurs="0" name="chatMessage" nillable="true" type="q7:ChatMessage" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Typography_WCF" minOccurs="0" name="chatMessage" nillable="true" type="q6:ChatMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -86,7 +72,7 @@
   <xs:element name="addOrder">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Typography_WCF" minOccurs="0" name="order" nillable="true" type="q8:Order" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Typography_WCF" minOccurs="0" name="order" nillable="true" type="q7:Order" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -107,7 +93,7 @@
   <xs:element name="getOrdersByDateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Typography_WCF" minOccurs="0" name="getOrdersByDateResult" nillable="true" type="q9:ArrayOfOrder" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Typography_WCF" minOccurs="0" name="getOrdersByDateResult" nillable="true" type="q8:ArrayOfOrder" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -148,7 +134,7 @@
   <xs:element name="getSalesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Typography_WCF" minOccurs="0" name="getSalesResult" nillable="true" type="q10:ArrayOfSale" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Typography_WCF" minOccurs="0" name="getSalesResult" nillable="true" type="q9:ArrayOfSale" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -160,7 +146,7 @@
   <xs:element name="getServicesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Typography_WCF" minOccurs="0" name="getServicesResult" nillable="true" type="q11:ArrayOfService" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Typography_WCF" minOccurs="0" name="getServicesResult" nillable="true" type="q10:ArrayOfService" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

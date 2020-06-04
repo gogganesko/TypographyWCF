@@ -164,7 +164,7 @@ namespace Typography_WCF
             int isLoggedOut = 0;
             List<Person> allPersons = getPersons();
             Person authuser = allPersons.Find(x => x.id == personID);
-            if (authuser != null)
+            if (authuser != null && checkToken(authuser) == true)
             {
                 using (SQLiteConnection Connect = new SQLiteConnection(@"Data Source=Typography.db; Version=3"))
                 {
@@ -184,7 +184,7 @@ namespace Typography_WCF
             return isLoggedOut;
         }
 
-        public bool checkToken(Person user)
+        private bool checkToken(Person user)
         {
             if (user.token != "")
             {
@@ -199,34 +199,55 @@ namespace Typography_WCF
         public Person getCurrentUser(string login, string password)
         {
             Person currentUser = getPersons().First(x => x.login == login && x.password == password);
-            return currentUser;
+            if (checkToken(currentUser) == true)
+            {
+                return currentUser;
+            }
+            else return null;
         }
 
         public List<Order> getOrdersOfCurrentUser(Person user)
         {
-            List<Order> userOrders = getOrders().FindAll(x => x.client.id == user.id);
-            return userOrders;
+            if (checkToken(user) == true)
+            {
+                List<Order> userOrders = getOrders().FindAll(x => x.client.id == user.id);
+                return userOrders;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public List<ChatMessage> GetChatMessagesOfOrder(Order order)
         {
             List<ChatMessage> chatMessages = getChatMessages().FindAll(x => x.order.id == order.id);
-            return chatMessages;
+            Person currentUser = getPersons().First(x => x.id == order.client.id);
+            if (checkToken(currentUser) == true)
+            {
+                return chatMessages;
+            }
+            else return null;
+            
         }
 
         public void changePwd(int personID, string password)//функция смены пароля
         {
             List<Person> allPersons = getPersons();
             Person authuser = allPersons.Find(x => x.id == personID);
-            using (SQLiteConnection Connect = new SQLiteConnection(@"Data Source=Typography.db; Version=3"))
+            if (checkToken(authuser) == true)
             {
-                string sql = String.Format(@"Update Persons Set Password = ""{0}"" Where id = {1}",password, personID);
-                SQLiteCommand command = new SQLiteCommand(sql, Connect);
-                Connect.Open(); // открыть соединение
-                command = new SQLiteCommand(sql, Connect);
-                command.ExecuteNonQuery();
+                using (SQLiteConnection Connect = new SQLiteConnection(@"Data Source=Typography.db; Version=3"))
+                {
+                    string sql = String.Format(@"Update Persons Set Password = ""{0}"" Where id = {1}", password, personID);
+                    SQLiteCommand command = new SQLiteCommand(sql, Connect);
+                    Connect.Open(); // открыть соединение
+                    command = new SQLiteCommand(sql, Connect);
+                    command.ExecuteNonQuery();
+                }
+                authuser.password = password;
             }
-            authuser.password = password;
+
         }
 
 
@@ -262,23 +283,33 @@ namespace Typography_WCF
         {
             using (SQLiteConnection Connect = new SQLiteConnection(@"Data Source=Typography.db; Version=3"))
             {
-                persons = getPersons();
-                services = getServices();
-                int personID = persons.Find(x => x.id == order.client.id).id;
-                int serviceID = services.Find(x => x.id == order.service.id).id;
-                string sql = String.Format(@"Insert into Orders (PersonID, ServiceID, Count, Date, State) values ({0}, {1}, {2}, ""{3}"", ""{4}"")", personID.ToString(), serviceID.ToString(), order.count.ToString(), order.date.ToString("yyyy-MM-dd HH:MM"), order.state.ToString());
-                SQLiteCommand command = new SQLiteCommand(sql, Connect);
-                Connect.Open(); // открыть соединение
-                command = new SQLiteCommand(sql, Connect);
-                command.ExecuteNonQuery();            
+                Person currentUser = getPersons().First(x => x.id == order.client.id);
+                if (checkToken(currentUser) == true)
+                {
+                    persons = getPersons();
+                    services = getServices();
+                    int personID = persons.Find(x => x.id == order.client.id).id;
+                    int serviceID = services.Find(x => x.id == order.service.id).id;
+                    string sql = String.Format(@"Insert into Orders (PersonID, ServiceID, Count, Date, State) values ({0}, {1}, {2}, ""{3}"", ""{4}"")", personID.ToString(), serviceID.ToString(), order.count.ToString(), order.date.ToString("yyyy-MM-dd HH:MM"), order.state.ToString());
+                    SQLiteCommand command = new SQLiteCommand(sql, Connect);
+                    Connect.Open(); // открыть соединение
+                    command = new SQLiteCommand(sql, Connect);
+                    command.ExecuteNonQuery();
+                }
+            
             }
         }
 
         public List<Order> getOrdersByDate(int PersonID, DateTime startDate, DateTime endDate)//Получить список заказов в разрезе времени
         {
-            List<Order> allOrders = getOrders();
-            List<Order> resultOrders = allOrders.FindAll(x => x.client.id == PersonID && x.date >= startDate && x.date <= endDate);
-            return resultOrders;            
+            Person currentUser = getPersons().First(x => x.id == PersonID);
+            if (checkToken(currentUser) == true)
+            {
+                List<Order> allOrders = getOrders();
+                List<Order> resultOrders = allOrders.FindAll(x => x.client.id == PersonID && x.date >= startDate && x.date <= endDate);
+                return resultOrders;
+            }
+            else return null;
         }
 
         
@@ -311,17 +342,21 @@ namespace Typography_WCF
 
         public void addChatMessage(ChatMessage chatMessage)
         {
-            using (SQLiteConnection Connect = new SQLiteConnection(@"Data Source=Typography.db; Version=3"))
+            Person currentUser = getPersons().First(x => x.id == chatMessage.author.id);
+            if (checkToken(currentUser) == true)
             {
-                persons = getPersons();
-                orders = getOrders();
-                int personID = persons.Find(x => x.id == chatMessage.author.id).id;
-                int orderID = orders.Find(x => x.id == chatMessage.order.id).id;                
-                string sql = String.Format(@"Insert into ChatMessages (PersonID, OrderID, Message, Date) values ({0}, {1}, ""{2}"", ""{3}"")", personID.ToString(), orderID.ToString(), chatMessage.message.ToString(), chatMessage.date.ToString("yyyy-MM-dd HH:MM"));
-                SQLiteCommand command = new SQLiteCommand(sql, Connect);
-                Connect.Open(); // открыть соединение
-                command = new SQLiteCommand(sql, Connect);
-                command.ExecuteNonQuery();
+                using (SQLiteConnection Connect = new SQLiteConnection(@"Data Source=Typography.db; Version=3"))
+                {
+                    persons = getPersons();
+                    orders = getOrders();
+                    int personID = persons.Find(x => x.id == chatMessage.author.id).id;
+                    int orderID = orders.Find(x => x.id == chatMessage.order.id).id;
+                    string sql = String.Format(@"Insert into ChatMessages (PersonID, OrderID, Message, Date) values ({0}, {1}, ""{2}"", ""{3}"")", personID.ToString(), orderID.ToString(), chatMessage.message.ToString(), chatMessage.date.ToString("yyyy-MM-dd HH:MM"));
+                    SQLiteCommand command = new SQLiteCommand(sql, Connect);
+                    Connect.Open(); // открыть соединение
+                    command = new SQLiteCommand(sql, Connect);
+                    command.ExecuteNonQuery();
+                }
             }
         }
 

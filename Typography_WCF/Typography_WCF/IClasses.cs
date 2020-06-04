@@ -18,8 +18,8 @@ namespace Typography_WCF
         [OperationContract]
         List<Order> getOrdersOfCurrentUser(Person user);
 
-        [OperationContract]
-        bool checkToken(Person user);
+       // [OperationContract]
+       // bool checkToken(Person user);
 
         [OperationContract]
         void changePwd(int personID, string password);

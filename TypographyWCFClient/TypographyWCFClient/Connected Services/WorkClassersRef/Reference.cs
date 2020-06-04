@@ -753,12 +753,6 @@ namespace TypographyWCFClient.WorkClassersRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/getOrdersOfCurrentUser", ReplyAction="http://tempuri.org/IClasses/getOrdersOfCurrentUserResponse")]
         System.Threading.Tasks.Task<TypographyWCFClient.WorkClassersRef.Order[]> getOrdersOfCurrentUserAsync(TypographyWCFClient.WorkClassersRef.Person user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/checkToken", ReplyAction="http://tempuri.org/IClasses/checkTokenResponse")]
-        bool checkToken(TypographyWCFClient.WorkClassersRef.Person user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/checkToken", ReplyAction="http://tempuri.org/IClasses/checkTokenResponse")]
-        System.Threading.Tasks.Task<bool> checkTokenAsync(TypographyWCFClient.WorkClassersRef.Person user);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasses/changePwd", ReplyAction="http://tempuri.org/IClasses/changePwdResponse")]
         void changePwd(int personID, string password);
         
@@ -857,14 +851,6 @@ namespace TypographyWCFClient.WorkClassersRef {
         
         public System.Threading.Tasks.Task<TypographyWCFClient.WorkClassersRef.Order[]> getOrdersOfCurrentUserAsync(TypographyWCFClient.WorkClassersRef.Person user) {
             return base.Channel.getOrdersOfCurrentUserAsync(user);
-        }
-        
-        public bool checkToken(TypographyWCFClient.WorkClassersRef.Person user) {
-            return base.Channel.checkToken(user);
-        }
-        
-        public System.Threading.Tasks.Task<bool> checkTokenAsync(TypographyWCFClient.WorkClassersRef.Person user) {
-            return base.Channel.checkTokenAsync(user);
         }
         
         public void changePwd(int personID, string password) {

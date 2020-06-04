@@ -25,12 +25,6 @@
   <wsdl:message name="IClasses_getOrdersOfCurrentUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:getOrdersOfCurrentUserResponse" />
   </wsdl:message>
-  <wsdl:message name="IClasses_checkToken_InputMessage">
-    <wsdl:part name="parameters" element="tns:checkToken" />
-  </wsdl:message>
-  <wsdl:message name="IClasses_checkToken_OutputMessage">
-    <wsdl:part name="parameters" element="tns:checkTokenResponse" />
-  </wsdl:message>
   <wsdl:message name="IClasses_changePwd_InputMessage">
     <wsdl:part name="parameters" element="tns:changePwd" />
   </wsdl:message>
@@ -92,10 +86,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IClasses/getOrdersOfCurrentUser" message="tns:IClasses_getOrdersOfCurrentUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClasses/getOrdersOfCurrentUserResponse" message="tns:IClasses_getOrdersOfCurrentUser_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="checkToken">
-      <wsdl:input wsaw:Action="http://tempuri.org/IClasses/checkToken" message="tns:IClasses_checkToken_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IClasses/checkTokenResponse" message="tns:IClasses_checkToken_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="changePwd">
       <wsdl:input wsaw:Action="http://tempuri.org/IClasses/changePwd" message="tns:IClasses_changePwd_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClasses/changePwdResponse" message="tns:IClasses_changePwd_OutputMessage" />
@@ -151,15 +141,6 @@
     </wsdl:operation>
     <wsdl:operation name="getOrdersOfCurrentUser">
       <soap:operation soapAction="http://tempuri.org/IClasses/getOrdersOfCurrentUser" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="checkToken">
-      <soap:operation soapAction="http://tempuri.org/IClasses/checkToken" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
