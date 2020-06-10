@@ -202,14 +202,7 @@ namespace Typography_WCF
             {
                 return true;
             }
-            if (user.token == "")
-            {
                 return false;
-            }
-            else
-            {
-                return false;
-            }
         }
 
         public Person getCurrentUser(string login, string password)
