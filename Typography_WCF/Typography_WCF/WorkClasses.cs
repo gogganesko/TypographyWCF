@@ -186,8 +186,7 @@ namespace Typography_WCF
 
         private bool checkToken(Person user)
         {
-            string token = "";
-            DateTime tokenDate = new DateTime();
+            string token = Convert.ToBase64String(Guid.NewGuid().ToByteArray()); //генерация уникального токена на C#;
             using (SQLiteConnection Connect = new SQLiteConnection(@"Data Source=Typography.db; Version=3"))
             {
                 string sql = String.Format(@"Select * From Persons where Persons.id = ""{0}""", user.id);
@@ -197,10 +196,9 @@ namespace Typography_WCF
                 while (reader.Read())
                 {
                     token = Convert.ToString(reader["Token"]);
-                    tokenDate = Convert.ToDateTime(reader["TokenDate"]);
                 }
             }
-            if (user.token == token && user.tokenDate == tokenDate)
+            if (user.token == token)
             {
                 return true;
             }
