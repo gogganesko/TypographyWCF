@@ -202,6 +202,10 @@ namespace Typography_WCF
             {
                 return true;
             }
+            if (user.token == "")
+            {
+                return false;
+            }
             else
             {
                 return false;
